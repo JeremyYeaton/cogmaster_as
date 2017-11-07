@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "## LOAD PACKAGES ####\nlibrary(dplyr)\n\n## READ IN DATA ####\ndata = read.table(\"data/rcourse_lesson2_data.txt\", header=T, sep=\"\\t\")\ndata\n\n## CLEAN DATA ####\ndata_clean = data %>%\n  filter(name == \"Jeremy\")\n\nhead(data_clean)\nxtabs(~name, data_clean)\n\ndata_clean = data %>%\n  filter(name == \"Jeremy\") %>%\n  mutate(name = factor(name))\n\ndata_clean = data %>%\n  filter(name == \"Jeremy\") %>%\n  mutate(name = factor(name)) %>%\n  filter(year > 1900) %>%\n  filter(year <= 2000)\n\nmin(data_clean$year)\nmax(data_clean$year)\n",
+    "created" : 1509999263942.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3761235190",
+    "id" : "EE702679",
+    "lastKnownWriteTime" : 1510000716,
+    "last_content_update" : 1510000716571,
+    "path" : "~/Documents/cogmaster/as/rcourse_lesson2/scripts/cleaning.R",
+    "project_path" : "scripts/cleaning.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

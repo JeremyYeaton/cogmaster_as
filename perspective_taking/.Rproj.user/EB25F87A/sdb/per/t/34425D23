@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(ggplot2)\n\n#Use box-and-whiskers charts or density plots to show the distribution \n#of individual increase in the composite score for each treatment.\n\nage.plot <- ggplot(r_clean, aes(x=age.f,y=score)) +\n  geom_boxplot() + \n  ggtitle(\"Age\") +\n  xlab(\"Age\")\n\ndaycare.plot <- ggplot(r_clean,aes(x=daycare.f,y=score)) +\n  geom_boxplot() + \n  ggtitle(\"Daycare\") +\n  xlab(\"Daycare\")\n\nage.plot\ndaycare.plot\n\nplot_data <- r_clean\n\ntreatments.plot <- ggplot(plot_data,aes(x=age.f,y=score,fill=daycare.f)) +\n  geom_boxplot() +\n  ggtitle(\"Score distribution by treatment\")\ntreatments.plot\n\ndensity.plot <- ggplot(plot_data,aes(x=score,color= treatment,fill=treatment)) +\n  geom_density(alpha=0.1,kernel=\"gaussian\") +\n  ggtitle(\"Density of score by treatment\")\ndensity.plot\n\nhist.plot <- ggplot(plot_data,aes(x=score)) +\n  geom_histogram() +\n  geom_density() +\n  ggtitle(\"Density of score by treatment\")\nhist.plot\n",
+    "created" : 1508831334306.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "991220999",
+    "id" : "34425D23",
+    "lastKnownWriteTime" : 1508839839,
+    "last_content_update" : 1508839839502,
+    "path" : "~/Documents/cogmaster/AS/perspective_taking/scripts/persp_taking_data_figures.R",
+    "project_path" : "scripts/persp_taking_data_figures.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

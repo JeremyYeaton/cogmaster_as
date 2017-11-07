@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(ez)\nlibrary(dplyr)\nlibrary(car)\n\n#Run a two-way ANOVA by considering increase factor score as the response variable\n#and Daycare and Age group as explanatory variables, with their interaction. \n#(a) Use an interaction plot to summarize the main findings. \n#(b) Is the interaction significant at the 5% level? \n#(c) If not, summarize the effect of each factor (partial eta squared and p-value).\n\ndata_stats <- r %>%\n  mutate(age=factor(age)) %>%\n  mutate(daycare=factor(daycare))\ndata_stats$id <- factor(1:40)\n\ndaycare.ezanova = ezANOVA(r_clean,\n                         dv = score,\n                         wid = id,\n                         within=age.f,\n                         between = daycare.f,\n                         type = 3)\ndaycare.ezanova\n\nage.ezanova = ezANOVA(r_clean,\n                          dv = score,\n                          wid = factor(id),\n                          between = age,\n                          type = 3)\n\nage.ezanova\n",
+    "created" : 1508799984301.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3502212936",
+    "id" : "D9D3849C",
+    "lastKnownWriteTime" : 1508837010,
+    "last_content_update" : 1508837010153,
+    "path" : "~/Documents/cogmaster/AS/perspective_taking/scripts/persp_taking_stats.R",
+    "project_path" : "scripts/persp_taking_stats.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

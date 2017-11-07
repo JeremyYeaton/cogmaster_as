@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"Perspective Taking Summary\"\nauthor: \"Jeremy Yeaton\"\ndate: \"October 17, 2017\"\noutput: html_document\n---\n\n```{r load setup, include = FALSE}\nload(\"persp_taking_environment.RData\")\nlibrary(xtable)\n```\n\n3. Run a two-way ANOVA by considering increase factor score as the response\n   variable and Daycare and Age group as explanatory variables, with their\n   interaction. (a) Use an interaction plot to summarize the main\n   findings. (b) Is the interaction significant at the 5% level? (c) If not,\n   summarize the effect of each factor (partial eta squared and p-value).\n\n4. Compare results obtained in (3) with those from a two-way ANOVA relying\n   on (a) Type II or (b) Type III sum of squares which are available in the\n   Anova() command from the car R package (install.packages(\"car\")). Are results\n   influenced by the order in which factors enter the model in each case?\n   (See http://goo.gl/JUJNGj for details about computing type I, II and III\n   SS.)\n   \n1. Does daycare experience improve overall performance on perspective\n   taking?\n2. Is this result influenced by the age of the subject?\n\nTypes of ANOVAs:\nAll 3 types will result in the same interaction, but differ on how they handle main effects\nType I is better for measuring main effects in order\nType III is better for interactions\nType II  only if you think there is no effect\n\n## Summary of data\n```{r}\ntable_daycare\ntable_age\ntable_cross\n```\n\n## Figures\nUse box-and-whiskers charts or density plots to show the distribution of individual increase in the composite score for each treatment.\nBox and whisker:\n```{r}\ntreatments.plot\n```\n\nDensity:\n```{r}\ndensity.plot\n```\n\n##ANOVAs\n```{r}\ndaycare.ezanova\n```\n",
+    "created" : 1508233973437.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3903917698",
+    "id" : "76014A0B",
+    "lastKnownWriteTime" : 1508838203,
+    "last_content_update" : 1508838203070,
+    "path" : "~/Documents/cogmaster/AS/perspective_taking/writeup/persp_taking_writeup.Rmd",
+    "project_path" : "writeup/persp_taking_writeup.Rmd",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

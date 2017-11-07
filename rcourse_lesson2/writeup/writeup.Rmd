@@ -1,0 +1,43 @@
+---
+title: 'R Course Lesson 2: Linear Regression'
+author: "Jeremy Yeaton"
+date: "November 6, 2017"
+output: html_document
+---
+
+```{r, echo=FALSE}
+load("rcourse_lesson2_environment.RData")
+```
+
+# Introduction
+I looked at how common my name, "Jeremy", is in the United States population both by year and sex.
+
+# Results
+
+## Prevalence by Year
+
+Below is a plot for how the proportion of people with the name "Jeremy" (log base 10 transformed) has changed over time. Overall the trend is positive but oddly shaped.
+
+```{r, fig.align='center'}
+year.plot
+```
+To test if there is a significant effect of year a linear model was built. Proportion of the population log base 10 transformed was the dependent variable and year the independent variable. As shown below, year was not significant, although the coefficients do show a positive slope.
+
+```{r}
+year.lm
+```
+
+## Prevalence by Sex
+It is also notable that "Jeremy" is a much more common name for males, but there are females who have this name as well, as observed in the box plot below.
+
+```{r}
+sex.plot
+```
+
+In addition, by looking at the linear model of these data, we see that "Jeremy" is a more common name for males than females, given that the coefficient is positive.
+
+```{r}
+sex.lm
+```
+
+# Conclusion

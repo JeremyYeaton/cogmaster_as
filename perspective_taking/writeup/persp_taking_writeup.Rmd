@@ -1,0 +1,58 @@
+---
+title: "Perspective Taking Summary"
+author: "Jeremy Yeaton"
+date: "October 17, 2017"
+output: html_document
+---
+
+```{r load setup, include = FALSE}
+load("persp_taking_environment.RData")
+library(xtable)
+```
+
+3. Run a two-way ANOVA by considering increase factor score as the response
+   variable and Daycare and Age group as explanatory variables, with their
+   interaction. (a) Use an interaction plot to summarize the main
+   findings. (b) Is the interaction significant at the 5% level? (c) If not,
+   summarize the effect of each factor (partial eta squared and p-value).
+
+4. Compare results obtained in (3) with those from a two-way ANOVA relying
+   on (a) Type II or (b) Type III sum of squares which are available in the
+   Anova() command from the car R package (install.packages("car")). Are results
+   influenced by the order in which factors enter the model in each case?
+   (See http://goo.gl/JUJNGj for details about computing type I, II and III
+   SS.)
+   
+1. Does daycare experience improve overall performance on perspective
+   taking?
+2. Is this result influenced by the age of the subject?
+
+Types of ANOVAs:
+All 3 types will result in the same interaction, but differ on how they handle main effects
+Type I is better for measuring main effects in order
+Type III is better for interactions
+Type II  only if you think there is no effect
+
+## Summary of data
+```{r}
+table_daycare
+table_age
+table_cross
+```
+
+## Figures
+Use box-and-whiskers charts or density plots to show the distribution of individual increase in the composite score for each treatment.
+Box and whisker:
+```{r}
+treatments.plot
+```
+
+Density:
+```{r}
+density.plot
+```
+
+##ANOVAs
+```{r}
+daycare.ezanova
+```
