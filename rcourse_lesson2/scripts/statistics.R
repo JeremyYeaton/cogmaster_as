@@ -24,3 +24,12 @@ sex.lm_sum
 
 sex.lm_resid = resid(sex.lm)
 head(sex.lm_resid)
+
+## IN CLASS ACTIVITIES ####
+untransformed.lm = lm(prop ~ year, data= data_stats)
+untransformed.lm
+
+untransformed.plot = ggplot(data_stats, aes(x=year, y= prop, color=sex)) +
+  geom_smooth(method= lm) +
+  geom_point()
+untransformed.plot
