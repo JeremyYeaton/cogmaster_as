@@ -1,0 +1,95 @@
+---
+title: 'Assignment #1'
+author: "Jeremy Yeaton"
+date: "November 25, 2017"
+output:
+  html_document: default
+  pdf_document: default
+---
+```{r, echo=FALSE}
+load("assignment01_environment.RData")
+library(knitr)
+````
+
+# Question 1:
+
+(a) *Give a numerical summary of FEV1 (mean, standard deviation and range)
+   for each smoking category (recoded as a categorical variable with
+   appropriate levels), and for all subjects (grand mean and overall
+   standard deviation). Results should be printed in one or two Tables.* 
+   
+   The table below shows the descriptive statistics for each of the groups, as well as a summary for the whole sample directly below.
+```{r,echo=F,results='asis'}
+kable(descript_tbl)
+   
+kable(overall_tbl)
+````
+
+(b) *Use box-and-whiskers charts or density plots to show the distribution of individual values.*
+
+Below is a box-and-whisker plot of all of the points in the sample.
+
+```{r,echo=F}
+box_whisker_summary.plot
+````
+
+The following box-and-whisker chart displays the distribution of the individual values by group, and provides a more useful insight into the data than the one above.
+
+```{r,echo=FALSE}
+box_whisker_bycat.plot
+````
+  
+# Question 2:
+*Carry out a one-way ANOVA to test the null hypothesis that FEV1 does not depend on smoking category.*
+
+```{r,echo=F}
+by_cat.anova
+````
+
+(a) *Formulate your conclusion in plain English, and*
+
+Based on our ANOVA, it seems to be the case that FEV1 *does* depend on smoking category, with a very low p-value and a high F-value, and as such, we can reject the null-hypothesis.
+
+(b) *report the percentage of explained variance.*
+
+The percentage of variance explained by this test is about 35.2%.
+   
+# Question 3:
+(a) *Use post-hoc Tukey HSD tests (R command: TukeyHSD) to compare all
+   pairs of means among the four groups of smokers. Summarize point estimates and 95% confidence intervals in a Table or graphical display,and indicate which pairs of means are found to be significantly different.*
+   
+```{r,echo=F,fig.height=10,fig.width=6}
+summary(f.thsd)
+   
+thsd
+   
+plot(thsd)
+````
+
+   Based on the Tukey HSD test, it would appear that only the difference between the **current smoker** and **non-smoker** groups is significant, since that is the only pair where the adjusted p-value is less than .05.
+   
+(b) *Compare those results with results from all pairwise comparisons for
+   mean FEV1 using the Bonferroni method (R command: pairwise.t.test).*
+   
+```{r}
+bonferroni.ttest
+````
+
+We see the same result here, with only the pair **current/non-smoker** returning a p-value less than .05, and as such, is the only pair where we can assume a significant difference.
+   
+# Question 4:
+*Is there any evidence for a linear or quadratic trend for mean FEV1 when
+   considering smoking status as ordered factor levels: 1 < 2 < 3 < 4 (use
+   the R command factor with the ordered = TRUE option*
+   
+# Question 5:
+(a) *Compare the preceding results with the conclusion that would be
+   reached by using a regression approach where one considers smoking status as a numerical variable, as well as its square, i.e., using the R command lm with a formula like FEV1 ~ smoking + I(smoking)^2.*
+   
+(b) *What could explain the difference, if any?*
+
+#Appendix
+
+```{r}
+f_clean
+````

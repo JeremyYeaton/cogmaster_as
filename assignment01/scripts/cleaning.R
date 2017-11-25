@@ -15,6 +15,7 @@ f_clean <- f %>%
                         ifelse(cat=="2","early",
                                ifelse(cat=="3","recent",
                                       ifelse(cat=="4","current","")))),
-                       ordered=T))
+                       ordered=T),
+                       ident=order(cat))
 
 f_clean
