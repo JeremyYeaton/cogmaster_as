@@ -25,9 +25,8 @@ summary(sqr_model.self)
 
 ###PLOT THE MODEL####
 #Plot with smoker^2 object
-linsqr_model.plot <- ggplot(lm_data,aes(x=cat,y=fev1))+
+linsqr_model.plot <- ggplot(lm_data,aes(x=cat^2,y=fev1))+
   geom_smooth(method="lm",se=T,formula=y~x+I(x^2),aes(group=1))+
-  #geom_smooth(method="lm",formula=y~I(x^2),aes(color="red"))+
   geom_point()+
   labs(x="Numeric Smoker Category",y="FEV1")
 
@@ -41,8 +40,17 @@ sqr_model.plot<-ggplot(lm_data,aes(x=cat,y=fev1))+
 
 sqr_model.plot
 
+
+sqr_model1.plot<-ggplot(lm_data,aes(x=cat,y=fev1))+
+  geom_smooth(method="lm",se=T,formula=y~x+I(x^2),aes(group=1))+
+  #geom_smooth(method="lm",formula=y~I(x^2),aes(color="red"))+
+  geom_point()+
+  labs(x="Numeric Smoker Category",y="FEV1")
+
+sqr_model1.plot
+
 ###COMPARE TO CLASSMATES' CODE AND WEEP QUIETLY####
-ggplot(data = lm_data, aes(x = cat, y = fev1)) +
+ggplot(data = lm_data, aes(x = cat^2, y = fev1)) +
   geom_point(shape = 5) +
   geom_smooth(formula=y~x+I(x^2),method = "lm", se=TRUE, color="red", aes(group=1)) +
   theme_minimal() 

@@ -20,6 +20,13 @@ lin_model.plot <- ggplot(f_clean,aes(x=factor(cat,ordered=T),y=fev1),na.rm=T)+
 
 lin_model.plot
 
+lin_model1.plot <- ggplot(f_clean,aes(x=factor(cat,ordered=T),y=fev1),na.rm=T)+
+  geom_smooth(formula=y~I(x^2),method=lm,se=T,aes(group=1))+
+  geom_point()+
+  labs(x="Ordered Smoker Category",y="FEV1")
+
+lin_model1.plot
+
 #Quadratic model
 qmodel.plot <- ggplot(lm_data,aes(x=cat,y=fev1))+
   geom_point()+

@@ -9,8 +9,8 @@ output:
 ```{r, echo=FALSE}
 load("assignment01_environment.RData")
 library(knitr)
-echo=F
 ````
+Disclaimer: I'm pretty confident that my R code is sound throughout, but I am drastically less confident in my explanations and interpretations. 
 
 # Question 1:
 
@@ -40,7 +40,7 @@ box_whisker_summary.plot
 density_bycat.plot
 ````
 
-The following box-and-whisker chart displays the distribution of the individual values by group, and provides a more useful insight into the data than the one above. A density plot of all the data together is also included below.
+The following box-and-whisker chart displays the distribution of the individual values by group, and provides a more useful insight into the data than the one above. We see that there is a general downward trend along the categories.
 
 ```{r,echo=FALSE}
 box_whisker_bycat.plot
@@ -66,15 +66,18 @@ The percentage of variance explained by this test is about 3.62%.
 (a) *Use post-hoc Tukey HSD tests (R command: TukeyHSD) to compare all
    pairs of means among the four groups of smokers. Summarize point estimates and 95% confidence intervals in a Table or graphical display,and indicate which pairs of means are found to be significantly different.*
    
-```{r,echo=F,fig.height=10,fig.width=6}
+```{r,echo=T,fig.height=10,fig.width=6}
+###A summary of the Tukey model:####
 summary(f.thsd)
-   
+
+###The Tukey model itself with point estimates####
 thsd
-   
+
+###A graphical representation of the Tukey test####
 plot(thsd)
 ````
 
-   Based on the Tukey HSD test, it would appear that only the difference between the **current smoker** and **non-smoker** groups is significant, since that is the only pair where the adjusted p-value is less than .05.
+   Based on the Tukey HSD test, it would appear that only the difference between the **current smoker** and **non-smoker** groups is significant, since that is the only pair where the adjusted p-value is less than .05. We also see this in the graph, where the same pair is the only one where the confidence interval places it entirely above 0.
    
 (b) *Compare those results with results from all pairwise comparisons for
    mean FEV1 using the Bonferroni method (R command: pairwise.t.test).*
@@ -100,10 +103,16 @@ This model would account for about 25.5% of the variance. A linear model of this
 lin_model.plot
 ````
 
-Based on the low p-value of the quadratic model above, there seems to be a downward quadratic trend in the data. This quadratic model is presented below. It is important to note, however, that this graph is not strictly commparable to the one above, since it relies on numerical x-values instead of categorical ones.
+Based on the low p-value of the quadratic model above, there seems to be a downward quadratic trend in the data. This quadratic model (y~x^2) is presented below. It is important to note, however, that this graph is not strictly comparable to the one above, since it relies on numerical x-values instead of categorical ones.
 
 ```{r,echo=F}
 qmodel.plot
+````
+
+In addition, if we square our x-variable in addition to the y~x+x^2 model, we see a slowing trend. I'm not sure if this is actually meaningful at all, though.
+
+```{r,echo=F}
+linsqr_model.plot
 ````
 
 # Question 5:
@@ -115,11 +124,13 @@ summary(num_model.self)
 ````
 
 ```{r,echo=F}
-linsqr_model.plot
+sqr_model1.plot
 ````
 
 
 (b) *What could explain the difference, if any?*
+
+I honestly have no idea. Here is a model of y~x^2 which seems to account for even more of the variance than the y~x+x^2 model, but I do not understand why.
 
 ```{r,echo=F}
 summary(sqr_model.self)

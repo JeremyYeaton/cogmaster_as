@@ -19,3 +19,14 @@ f_clean <- f %>%
                        ident=order(cat))
 
 f_clean
+
+
+###I found a better way to do this after I had finished####
+g_data <- g %>%
+  rename(cat=V1,fev1=V2)%>%
+  mutate(cat.f = factor(cat,
+                        levels=c("1","2","3","4"),
+                        labels=c("non","early","former","current"),
+                        ordered=T),
+         ident=order(cat))
+g_data
