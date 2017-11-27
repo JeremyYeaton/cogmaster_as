@@ -28,10 +28,10 @@ box_whisker_bycat.plot <- ggplot(f_clean,
   labs(x="Smoking Category",y="FEV1")
 box_whisker_bycat.plot
 
-box_whisker_summary.plot <-ggplot(f_clean,aes(x=1,y=fev1)) +
+box_whisker_summary.plot <-ggplot(f_clean,aes(x="Whole Sample",y=fev1)) +
   geom_boxplot()
 box_whisker_summary.plot
 
-density_bycat.plot <- ggplot(f_clean,aes(x=cat,y=fev1)) +
+density_bycat.plot <- ggplot(f_clean,aes(x=fev1)) +
   geom_density()
 density_bycat.plot

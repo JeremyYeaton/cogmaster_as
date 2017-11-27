@@ -18,3 +18,5 @@ plot(thsd)
 #compare to results from all pairwise comparisons for mean fev1 using the
 #bonferroni method
 bonferroni.ttest<-pairwise.t.test(f_clean$fev1,f_clean$cat.f,"bonferroni")
+
+bonferroni.ttest

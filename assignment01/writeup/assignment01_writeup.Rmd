@@ -9,6 +9,7 @@ output:
 ```{r, echo=FALSE}
 load("assignment01_environment.RData")
 library(knitr)
+echo=F
 ````
 
 # Question 1:
@@ -18,25 +19,32 @@ library(knitr)
    appropriate levels), and for all subjects (grand mean and overall
    standard deviation). Results should be printed in one or two Tables.* 
    
-   The table below shows the descriptive statistics for each of the groups, as well as a summary for the whole sample directly below.
+   The table below shows the descriptive statistics for each of the groups:
 ```{r,echo=F,results='asis'}
 kable(descript_tbl)
-   
+````
+
+And descriptive statistics of all of the data together:
+
+```{r,echo=F,results='asis'}
 kable(overall_tbl)
 ````
 
 (b) *Use box-and-whiskers charts or density plots to show the distribution of individual values.*
 
-Below is a box-and-whisker plot of all of the points in the sample.
+Below is a box-and-whisker plot of all of the points in the sample. A density plot of the same data is also included below it.
 
 ```{r,echo=F}
 box_whisker_summary.plot
+
+density_bycat.plot
 ````
 
-The following box-and-whisker chart displays the distribution of the individual values by group, and provides a more useful insight into the data than the one above.
+The following box-and-whisker chart displays the distribution of the individual values by group, and provides a more useful insight into the data than the one above. A density plot of all the data together is also included below.
 
 ```{r,echo=FALSE}
 box_whisker_bycat.plot
+
 ````
   
 # Question 2:
@@ -48,11 +56,11 @@ by_cat.anova
 
 (a) *Formulate your conclusion in plain English, and*
 
-Based on our ANOVA, it seems to be the case that FEV1 *does* depend on smoking category, with a very low p-value and a high F-value, and as such, we can reject the null-hypothesis.
+Based on our ANOVA, it seems to be the case that FEV1 *does* depend on smoking category, with a very low p-value and a high F-value, and as such, we can reject the null-hypothesis. This means that there is much more variance between groups than within them.
 
 (b) *report the percentage of explained variance.*
 
-The percentage of variance explained by this test is about 35.2%.
+The percentage of variance explained by this test is about 3.62%.
    
 # Question 3:
 (a) *Use post-hoc Tukey HSD tests (R command: TukeyHSD) to compare all
@@ -71,7 +79,7 @@ plot(thsd)
 (b) *Compare those results with results from all pairwise comparisons for
    mean FEV1 using the Bonferroni method (R command: pairwise.t.test).*
    
-```{r}
+```{r,echo=F}
 bonferroni.ttest
 ````
 
@@ -82,14 +90,37 @@ We see the same result here, with only the pair **current/non-smoker** returning
    considering smoking status as ordered factor levels: 1 < 2 < 3 < 4 (use
    the R command factor with the ordered = TRUE option*
    
+```{r,echo=F}
+summary(lin_model.self)
+````
+
+This model would account for about 25.5% of the variance. A linear model of this data would produce the following graph along its categorical x-axis:
+
+```{r,echo=F}
+lin_model.plot
+````
+
+Based on the low p-value of the quadratic model above, there seems to be a downward quadratic trend in the data. This quadratic model is presented below. It is important to note, however, that this graph is not strictly commparable to the one above, since it relies on numerical x-values instead of categorical ones.
+
+```{r,echo=F}
+qmodel.plot
+````
+
 # Question 5:
 (a) *Compare the preceding results with the conclusion that would be
-   reached by using a regression approach where one considers smoking status as a numerical variable, as well as its square, i.e., using the R command lm with a formula like FEV1 ~ smoking + I(smoking)^2.*
-   
+reached by using a regression approach where one considers smoking status as a numerical variable, as well as its square, i.e., using the R command lm with a formula like FEV1 ~ smoking + I(smoking)^2.*
+
+```{r,echo=F}
+summary(num_model.self)
+````
+
+```{r,echo=F}
+linsqr_model.plot
+````
+
+
 (b) *What could explain the difference, if any?*
 
-#Appendix
-
-```{r}
-f_clean
+```{r,echo=F}
+summary(sqr_model.self)
 ````
